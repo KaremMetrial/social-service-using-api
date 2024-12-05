@@ -25,7 +25,7 @@ class FollowController extends Controller
         if ($isFollowing['attached']) {
             Mail::to($user->email)
                 ->send(new FollowNotification(auth()->user()));
-                event(new NewFollowerEvent(auth()->user()));
+                event(new NewFollowerEvent(auth()->user(), $user));
             }
 
 

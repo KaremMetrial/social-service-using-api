@@ -14,16 +14,18 @@ class NewFollowerEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $follower;
+    public $user;
 
-    public function __construct(User $follower)
+    public function __construct(User $follower, User $user)
     {
         $this->follower = $follower;
+        $this->user = $user;
     }
 
     public function broadcastOn(): array
     {
         return [
-            new Channel('notifications')
+            new Channel('notifications.' . $this->user->id)
         ];
     }
 
