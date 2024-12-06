@@ -21,7 +21,7 @@ class CommentResource extends JsonResource
                 'id' => $this->user->id,
                 'username' => $this->user->username,
                 'email' => $this->user->email,
-                'profile_picture' => $this->user->image,
+                'profile_picture' => "profile_images/" . $this->user->image,
             ],
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
