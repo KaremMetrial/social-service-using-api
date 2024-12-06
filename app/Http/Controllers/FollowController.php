@@ -12,6 +12,7 @@ class FollowController extends Controller
     public function followUser(User $user)
     {
 
+
         if (auth()->id() === $user->id) {
             return response()->json([
                 'message' => 'You cannot follow yourself',

@@ -20,6 +20,9 @@ class TweetResource extends JsonResource
                 'email' => $this->user->email,
                 'image' => $this->user->image,
             ],
+            'comments' => $this->comments->count() > 0
+                ? CommentResource::collection($this->comments->take(3)->sortByDesc('created_at'))
+                : 'No comments yet',
             'likes_count' => $this->likes()->count(),
             'comments_count' => $this->comments()->count(),
         ];
